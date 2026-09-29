@@ -1,0 +1,121 @@
+@_INIT
+
+DEFVAR CTR 0 int
+DEFVAR CTR-MAIN 0 int
+
+SAMPLE A "Samples/chug.wav" 0.3
+SAMPLE B "Samples/pinch.wav" 0.3 TRUE
+
+SAMPLE K "Samples/kick-dm.wav" 0.3 TRUE
+SAMPLE CH "Samples/china.wav" 0.6 TRUE
+SAMPLE S "Samples/snare.wav" 0.6 TRUE
+
+BPM 220
+
+P CH 4
+P CH 4
+P CH 4
+P K 8
+P K 8
+P S 4
+P !CH 4
+P S 4
+P !CH 4
+P S 4
+P !CH 4
+P S 4
+P !CH 4
+
+>BEGIN
+	JUMPGE CTR-MAIN 4 END
+
+	> DRUM
+		JUMPGE CTR 3 OUTRO
+		P K 4
+		P !CH 4
+		P !S 4
+		P !A 4
+		
+		P K 4
+		P !CH 4
+		P !S 4
+		P !A 4
+		
+		P K 4
+		P !CH 4
+		P !S 4
+		P !A 4
+		
+		P K 4
+		P !CH 4
+		P !B 4
+
+		ADD CTR 1
+		JUMP DRUM
+
+	>OUTRO
+		P K 8
+		P !S 8
+		P !CH 8
+		
+		P K 8
+		P !S 8
+
+		P K 8
+		P !S 8
+		P !CH 8
+
+		P K 8
+		P !S 8
+		
+		P K 4
+		P !CH 4
+		P !S 4
+		
+		P K 4
+		P !CH 4
+		P !S 4
+
+		ADD CTR-MAIN 1
+		SETVAR CTR 0
+		JUMP BEGIN
+
+>END
+	P K 4
+	P !CH 4
+	P !S 4
+	P !A 4
+	
+	P K 4
+	P !CH 4
+	P !S 4
+	P !A 4
+	
+	P K 4
+	P !CH 4
+	P !S 4
+	P !A 4
+	
+	P K 4
+	P !CH 4
+	P !S 4
+	P !A 4
+	BREAK
+
+
+# STUB
+
+# >RIFF
+# 	JUMPGE CTR 4 END
+# 	P A 4
+# 	P B 4 TRUE
+
+# 	P A 4
+# 	P B 4 TRUE
+	
+# 	P A 4
+# 	P A 4
+# 	P A 4
+# 	P A 4
+# 	ADD CTR 1
+# 	JUMP RIFF
