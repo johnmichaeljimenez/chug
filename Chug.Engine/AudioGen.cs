@@ -11,6 +11,26 @@ public class AudioGen : OpcodeEngine.Core.Engine
     {
     }
 
+    private float CalculateDuration(int length, bool triplet)
+    {
+        float duration = (60f / BPM) * (4f / length);
+        if (triplet)
+        {
+            duration *= (2f / 3f);
+        }
+        return duration;
+    }
+
+    public void AddRest(int length, bool triplet = false)
+    {
+        float duration = CalculateDuration(length, triplet);
+
+        if (Clips.Count > 0)
+        {
+            lastDuration += duration;
+        }
+    }
+
     public void AddNote(string sampleName, int length, bool oneShot, bool append = true, bool triplet = false)
     {
         if (!Samples.TryGetValue(sampleName, out var sample))
@@ -25,12 +45,12 @@ public class AudioGen : OpcodeEngine.Core.Engine
             startTime = lastClip.StartTime + (append ? lastDuration : 0);
         }
 
-        float duration = (60f / BPM) * (4f / length);
-        if (triplet)
-            duration *= (2f / 3f);
+        float duration = CalculateDuration(length, triplet);
 
         if (append)
+        {
             lastDuration = duration;
+        }
 
         var ac = new AudioClip()
         {
