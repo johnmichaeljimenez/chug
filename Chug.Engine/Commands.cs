@@ -32,6 +32,19 @@ public class Solo : BaseCommand
 	}
 }
 
+public class Mute : BaseCommand
+{
+	[CommandParameter]
+	private string sampleID;
+
+	public override void OnEnter()
+	{
+		base.OnEnter();
+
+		AudioGen.Samples[sampleID].Mute = true;
+	}
+}
+
 public class Sample : BaseCommand
 {
 	[CommandParameter]

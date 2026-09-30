@@ -58,7 +58,7 @@ public class AudioGen : OpcodeEngine.Core.Engine
         {
             FileName = sample.FilePath,
             StartTime = startTime,
-            Volume = currentSolo == null || currentSolo == sample? sample.Volume : 0,
+            Volume = (!sample.Mute && (currentSolo == null || currentSolo == sample))? sample.Volume : 0,
             Duration = oneShot || sample.OneShot ? null : duration + 0.1f //slight padding
         };
 

@@ -10,6 +10,7 @@ public class SampleData
     public bool OneShot;
 
     public bool Solo;
+	public bool Mute;
 }
 
 public class Program
