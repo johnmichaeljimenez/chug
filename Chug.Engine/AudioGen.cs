@@ -38,6 +38,8 @@ public class AudioGen : OpcodeEngine.Core.Engine
             throw new ArgumentException($"Sample key '{sampleName}' not found in sample dictionary.");
         }
 
+        var currentSolo = Samples.Values.FirstOrDefault(p => p.Solo);
+
         float startTime = 0f;
         if (Clips.Count > 0)
         {
@@ -56,7 +58,7 @@ public class AudioGen : OpcodeEngine.Core.Engine
         {
             FileName = sample.FilePath,
             StartTime = startTime,
-            Volume = sample.Volume,
+            Volume = currentSolo == null || currentSolo == sample? sample.Volume : 0,
             Duration = oneShot || sample.OneShot ? null : duration + 0.1f //slight padding
         };
 

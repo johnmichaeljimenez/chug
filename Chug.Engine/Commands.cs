@@ -19,6 +19,19 @@ public class BPM : BaseCommand
 	}
 }
 
+public class Solo : BaseCommand
+{
+	[CommandParameter]
+	private string sampleID;
+
+	public override void OnEnter()
+	{
+		base.OnEnter();
+
+		AudioGen.Samples[sampleID].Solo = true;
+	}
+}
+
 public class Sample : BaseCommand
 {
 	[CommandParameter]

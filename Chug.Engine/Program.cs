@@ -8,6 +8,8 @@ public class SampleData
     public string FilePath;
     public float Volume = 1;
     public bool OneShot;
+
+    public bool Solo;
 }
 
 public class Program
