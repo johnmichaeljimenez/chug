@@ -1,13 +1,15 @@
+using YesodScript.Engine.Core;
+
 namespace Chug.Engine;
 
-public class AudioGen : OpcodeEngine.Core.Engine
+public class AudioGen : VirtualMachine
 {
     public int BPM = 120;
     private float lastDuration;
     public Dictionary<string, SampleData> Samples = new();
     public List<AudioClip> Clips = new();
 
-    public AudioGen(bool immediateMode = false, int randomSeed = 0) : base(immediateMode, randomSeed)
+    public AudioGen(int randomSeed = 0) : base(randomSeed)
     {
     }
 

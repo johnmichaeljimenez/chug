@@ -24,9 +24,9 @@ public class Program
         // if (!File.Exists(filePath))
         //     throw new FileNotFoundException($"'{filePath}' not found.");
 
-        var filePath = "Scripts/Test.ops";
+        var filePath = "Scripts/Test.ysl";
 
-        var audioGen = new AudioGen(true);
+        var audioGen = new AudioGen();
         audioGen.CompileFile(filePath);
         audioGen.Initialize();
 

@@ -1,11 +1,11 @@
-using OpcodeEngine.Commands;
-using OpcodeEngine.Core;
+using YesodScript.Engine.Commands;
+using YesodScript.Engine.Core;
 
 namespace Chug.Engine;
 
 public abstract class BaseCommand : Command
 {
-	protected AudioGen AudioGen => (AudioGen)Engine;
+	protected AudioGen AudioGen => (AudioGen)VM;
 }
 
 public class BPM : BaseCommand
